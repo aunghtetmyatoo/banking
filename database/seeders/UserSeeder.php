@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'address' => $user['Address'],
                 'code' => $user['UserCode'],
-                'state_code' => 'MMR001',
-                'township_code' => 'MMR001010',
+                'state_id' => 1,
+                'township_id' => 1,
             ]);
 
             $user->assignRole('User');

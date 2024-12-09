@@ -13,14 +13,13 @@ class StateSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get(database_path('seeders/data/State.json'));
+        $json = File::get(database_path('seeders/data/region.json'));
 
-        $states = json_decode($json, true);
+        $data = json_decode($json, true);
 
-        foreach ($states as $state) {
+        foreach ($data['data'] as $state) {
             State::firstOrCreate([
-                'name' => $state['StateName'],
-                'code' => $state['StateCode'],
+                'name' => $state['eng'],
             ]);
         }
     }

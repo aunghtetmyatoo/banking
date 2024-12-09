@@ -13,16 +13,19 @@ class TownshipSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get(database_path('seeders/data/Township.json'));
+        $json = File::get(database_path('seeders/data/region.json'));
 
-        $townships = json_decode($json, true);
+        $data = json_decode($json, true);
 
-        foreach ($townships as $township) {
-            Township::firstOrCreate(attributes: [
-                'name' => $township['TownshipName'],
-                'code' => $township['TownshipCode'],
-                'state_code' => $township['StateCode'],
-            ]);
+        foreach ($data['data'] as $state_key => $state) {
+            foreach ($state['districts'] as $district) {
+                foreach ($district['townships'] as $township) {
+                    Township::firstOrCreate([
+                        'name' => $township['eng'],
+                        'state_id' => $state_key + 1,
+                    ]);
+                }
+            }
         }
     }
 }
