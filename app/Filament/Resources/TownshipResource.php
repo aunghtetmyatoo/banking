@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TownshipResource\Pages;
+use App\Models\State;
 use App\Models\Township;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -30,13 +31,11 @@ class TownshipResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->unique()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('state_code')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('state_id')
+                    ->label('State')
+                    ->options(State::all()->pluck('name', 'id'))
+                    ->searchable()
+                    ->required(),
             ]);
     }
 
@@ -45,8 +44,6 @@ class TownshipResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('code')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('state_code')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('state.name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime(),

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('townships', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('state_id')->constrained();
+            $table->foreignId('state_id')->constrained('states');
             $table->timestamps();
         });
     }

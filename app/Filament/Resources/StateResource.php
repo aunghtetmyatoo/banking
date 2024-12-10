@@ -31,10 +31,6 @@ class StateResource extends Resource implements HasShieldPermissions
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->unique()
-                    ->maxLength(255),
             ]);
     }
 
@@ -43,7 +39,6 @@ class StateResource extends Resource implements HasShieldPermissions
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('code')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime(),
             ])
