@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\User\Pages\Auth\Registration;
+use App\Http\Middleware\ForceOtpCodeMiddleware;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -27,6 +29,10 @@ class UserPanelProvider extends PanelProvider
             ->path('user')
             ->authGuard('user')
             ->login()
+            ->registration(Registration::class)
+            ->passwordReset()
+            ->emailVerification()
+            ->profile()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -52,6 +58,7 @@ class UserPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
+                ForceOtpCodeMiddleware::class,
                 Authenticate::class,
             ]);
     }

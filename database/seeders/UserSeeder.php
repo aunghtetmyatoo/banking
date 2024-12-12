@@ -25,9 +25,10 @@ class UserSeeder extends Seeder
                 'mobile' => $user['MobileNo'],
                 'password' => bcrypt('password'),
                 'address' => $user['Address'],
-                'code' => $user['UserCode'],
+                'banking_number' => generate_banking_number(),
                 'state_id' => 1,
                 'township_id' => 1,
+                'otp_code' => '111111',
             ]);
 
             $user->assignRole('User');

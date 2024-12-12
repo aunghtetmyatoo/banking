@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username');
-            $table->string('code')->unique();
+            $table->string('banking_number')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -25,6 +25,8 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->foreignId('state_id')->constrained('states');
             $table->foreignId('township_id')->constrained('townships');
+            $table->boolean('is_otp_code_required')->default(1);
+            $table->string('otp_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
