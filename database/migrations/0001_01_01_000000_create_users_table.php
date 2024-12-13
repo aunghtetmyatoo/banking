@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('mobile')->unique();
+            $table->decimal('balance', 15)->default(0);
             $table->text('address')->nullable();
             $table->foreignId('state_id')->constrained('states');
             $table->foreignId('township_id')->constrained('townships');

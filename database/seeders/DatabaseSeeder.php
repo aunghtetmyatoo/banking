@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ShieldSeeder::class,
             UserSeeder::class,
             AdminSeeder::class,
+            SystemBalanceSeeder::class,
         ]);
     }
 }

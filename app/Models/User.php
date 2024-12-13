@@ -32,6 +32,7 @@ class User extends Authenticatable implements FilamentUser
         'township_id',
         'is_otp_code_required',
         'otp_code',
+        'balance',
     ];
 
     /**
