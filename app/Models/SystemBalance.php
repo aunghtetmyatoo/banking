@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class SystemBalance extends Model
 {
-    //
+    protected $fillable = ['balance'];
 }

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('system_balances', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->default('System');
             $table->unsignedBigInteger('balance');
             $table->timestamps();
         });
