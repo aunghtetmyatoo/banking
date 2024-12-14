@@ -28,6 +28,7 @@ return new class extends Migration
             $table->foreignId('township_id')->constrained('townships');
             $table->boolean('is_otp_code_required')->default(1);
             $table->string('otp_code')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

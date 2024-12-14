@@ -61,8 +61,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(\Filament\Panel $panel): bool
     {
-        // Implement your logic to determine if the user can access the panel
-        return true; // Example: Allow all users to access the panel
+        return $this->is_active;
     }
 
     public function state(): BelongsTo

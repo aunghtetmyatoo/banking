@@ -5,7 +5,6 @@ namespace App\Filament\User\Pages\Auth;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Filament\Actions\Action;
-use Filament\Facades\Filament;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Concerns;
@@ -42,17 +41,6 @@ class OtpCode extends Page
 
     public function mount(): void
     {
-        $user = Filament::auth()->user();
-
-        // $to = $user instanceof ShieldUser ? str_replace('_', '-', $user->getMorphClass()) : '/';
-        // if (! (bool) $user->otp_code) {
-        //     redirect($to);
-        // }
-
-        // if (! $user->is_otp_code_required && (bool) $user->otp_code) {
-        //     redirect($to);
-        // }
-
         $this->form->fill();
     }
 

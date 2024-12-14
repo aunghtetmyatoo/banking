@@ -65,6 +65,10 @@ class UserPanelProvider extends PanelProvider
             ->authMiddleware([
                 ForceOtpCodeMiddleware::class,
                 Authenticate::class,
-            ]);
+            ])
+            ->renderHook(
+                'panels::global-search.before',
+                fn () => view('filament.user.widgets.balance')
+            );
     }
 }

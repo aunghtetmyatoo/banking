@@ -14,13 +14,13 @@ $totalBalance = $systemBalance + $userBalance;
         <div
             class="flex flex-col w-full *:py-2 *:inline-flex *:justify-between *:border-b gap-y-5 *:border-b-gray-600 *:dark:border-b-gray-600 *:px-2">
             <div>
-                <span>{{ __('System Balance') . ' - ' }}</span> {{ number_format($systemBalance) }}
+                <span>{{ __('System Balance') }}</span> {{ number_format($systemBalance) }}
             </div>
             <div>
-                <span>{{ __('User Balance') . ' - ' }}</span> {{ number_format($userBalance) }}
+                <span>{{ __('User Balance') }}</span> {{ number_format($userBalance) }}
             </div>
             <div class="font-bold border-none text-primary-200 dark:text-primary-500">
-                <b>{{ __('Total balance') . ' - ' }}</b> {{ number_format($totalBalance) }}
+                <b>{{ __('Total balance') }}</b> {{ number_format($totalBalance) }}
             </div>
         </div>
     </div>
