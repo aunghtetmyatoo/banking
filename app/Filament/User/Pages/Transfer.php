@@ -5,6 +5,7 @@ namespace App\Filament\User\Pages;
 use App\Enums\TransactionType;
 use App\Models\Transaction;
 use App\Models\User;
+use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -28,10 +29,10 @@ class Transfer extends Page
     {
         $data = $this->form->getState();
 
-        $user = User::whereId($data['to_user_id'])->first();
+        $user = User::where('banking_number', $data['banking_number'])->first();
         $by = Auth::guard('user')->user();
 
-        $transaction = Transaction::make(
+        Transaction::make(
             transactionType: TransactionType::TRANSFER,
             amount: $data['amount'],
             user: $user,
@@ -47,23 +48,39 @@ class Transfer extends Page
 
     public function form(Form $form): Form
     {
+        $authUser = Auth::guard('user')->user();
+
         return $form
             ->schema([
-                Forms\Components\Select::make('to_user_id')
-                    ->label('To User')
-                    ->options(User::all()->mapWithKeys(function ($user) {
-                        return [$user->id => "{$user->name} ({$user->banking_number})"];
-                    }))
-                    ->searchable()
-                    ->reactive()
-                    ->required(),
+                Forms\Components\TextInput::make('banking_number')
+                    ->label("User's Banking Number")
+                    ->required()
+                    ->rules([
+                        fn (): Closure => function (string $attribute, $value, Closure $fail) use ($authUser) {
+                            $use = User::where('banking_number', $value)->first();
+                            if (! $use) {
+                                $fail('Invalid banking number.');
+                            }
+
+                            if ($value === $authUser->banking_number) {
+                                $fail('You cannot transfer to yourself.');
+                            }
+                        },
+                    ]),
                 Forms\Components\TextInput::make('amount')
                     ->label(__('Amount'))
                     ->numeric()
                     ->required()
                     ->minValue(1)
                     ->integer()
-                    ->placeholder(__('Enter amount')),
+                    ->placeholder(__('Enter amount'))
+                    ->rules([
+                        fn (): Closure => function (string $attribute, $value, Closure $fail) use ($authUser) {
+                            if ($value > $authUser->balance) {
+                                $fail('Balance is not enough.');
+                            }
+                        },
+                    ]),
             ])->statePath('data');
     }
 }
