@@ -71,6 +71,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('balance')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('banking_number'),
                 Tables\Columns\ToggleColumn::make('is_active')
                     ->label(__('Active'))
                     ->onIcon('heroicon-o-lock-open')
@@ -80,8 +81,8 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\ViewAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

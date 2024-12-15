@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
                 'state_id' => 1,
                 'township_id' => 1,
                 'otp_code' => '111111',
+                'balance' => $user['Balance'],
             ]);
 
             $user->assignRole('User');
