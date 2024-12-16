@@ -4,6 +4,7 @@ namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\TransactionResource\Pages;
 use App\Models\Transaction;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -11,7 +12,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
-class TransactionResource extends Resource
+class TransactionResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Transaction::class;
 
@@ -20,6 +21,13 @@ class TransactionResource extends Resource
     public static function canCreate(): bool
     {
         return false;
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+        ];
     }
 
     public static function form(Form $form): Form

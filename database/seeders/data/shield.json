@@ -3,9 +3,6 @@
         "name": "Admin",
         "guard_name": "admin",
         "permissions": {
-            "role": ["view_role", "create_role", "update_role", "delete_role"],
-            "admin": ["view_admin", "create_admin", "update_admin"],
-            "user": ["view_user", "create_user", "update_user"],
             "state": ["view_state", "create_state", "update_state"],
             "township": ["view_township", "create_township", "update_township"],
             "transaction": ["view_transaction"]
@@ -15,7 +12,7 @@
         "name": "User",
         "guard_name": "web",
         "permissions": {
-            "user": ["view_user"]
+            "transaction": ["view_transaction"]
         }
     }
 ]

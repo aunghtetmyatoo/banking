@@ -5,13 +5,14 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TownshipResource\Pages;
 use App\Models\State;
 use App\Models\Township;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class TownshipResource extends Resource
+class TownshipResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Township::class;
 
@@ -21,6 +22,8 @@ class TownshipResource extends Resource
     {
         return [
             'view',
+            'create',
+            'update',
         ];
     }
 
