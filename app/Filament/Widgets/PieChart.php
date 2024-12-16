@@ -8,7 +8,7 @@ use Filament\Widgets\ChartWidget;
 
 class PieChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Deposit / Withdraw';
 
     protected function getData(): array
     {

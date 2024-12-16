@@ -16,7 +16,7 @@ class TownshipResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Township::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     public static function getPermissionPrefixes(): array
     {

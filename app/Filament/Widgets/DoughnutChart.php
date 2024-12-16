@@ -8,7 +8,7 @@ use Filament\Widgets\ChartWidget;
 
 class DoughnutChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Deposit / Withdraw';
 
     protected function getData(): array
     {

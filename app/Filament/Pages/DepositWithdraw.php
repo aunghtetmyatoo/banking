@@ -16,7 +16,7 @@ class DepositWithdraw extends Page implements Forms\Contracts\HasForms
 {
     use Forms\Concerns\InteractsWithForms;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-arrows-right-left';
 
     protected static string $view = 'filament.pages.deposit-withdraw';
 

@@ -69,6 +69,8 @@ class UserPanelProvider extends PanelProvider
             ->renderHook(
                 'panels::global-search.before',
                 fn () => view('filament.user.widgets.balance')
-            );
+            )
+            ->viteTheme('resources/css/filament/admin/theme.css');
+
     }
 }
