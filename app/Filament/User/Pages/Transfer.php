@@ -55,6 +55,7 @@ class Transfer extends Page
                 Forms\Components\TextInput::make('banking_number')
                     ->label("User's Banking Number")
                     ->required()
+                    ->placeholder(__('Enter number'))
                     ->rules([
                         fn (): Closure => function (string $attribute, $value, Closure $fail) use ($authUser) {
                             $use = User::where('banking_number', $value)->first();

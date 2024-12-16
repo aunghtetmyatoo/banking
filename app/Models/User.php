@@ -6,8 +6,10 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser
@@ -72,5 +74,20 @@ class User extends Authenticatable implements FilamentUser
     public function township(): BelongsTo
     {
         return $this->belongsTo(Township::class);
+    }
+
+    public function fromTransactions(): MorphMany
+    {
+        return $this->morphMany(Transaction::class, 'from');
+    }
+
+    public function toTransactions(): MorphMany
+    {
+        return $this->morphMany(Transaction::class, 'to');
+    }
+
+    public function allTransactions(): Collection
+    {
+        return $this->fromTransactions->merge($this->toTransactions);
     }
 }

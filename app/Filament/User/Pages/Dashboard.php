@@ -3,6 +3,8 @@
 namespace App\Filament\User\Pages;
 
 use App\Filament\User\Widgets\BarChart;
+use App\Filament\User\Widgets\DoughnutChart;
+use App\Filament\User\Widgets\LineChart;
 use Filament\Pages\Dashboard as BaseDashboard;
 
 class Dashboard extends BaseDashboard
@@ -13,6 +15,8 @@ class Dashboard extends BaseDashboard
     {
         $widgets = [
             BarChart::make(),
+            LineChart::make(),
+            DoughnutChart::make(),
         ];
 
         return $widgets;

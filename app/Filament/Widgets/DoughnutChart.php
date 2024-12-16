@@ -2,6 +2,8 @@
 
 namespace App\Filament\Widgets;
 
+use App\Enums\TransactionType;
+use App\Models\Transaction;
 use Filament\Widgets\ChartWidget;
 
 class DoughnutChart extends ChartWidget
@@ -10,16 +12,26 @@ class DoughnutChart extends ChartWidget
 
     protected function getData(): array
     {
+        $allTransactions = Transaction::get();
+
+        $depositCount = $allTransactions
+            ->where('type', TransactionType::DEPOSIT)
+            ->count();
+
+        $withdrawCount = $allTransactions
+            ->where('type', TransactionType::WITHDRAW)
+            ->count();
+
         return [
             'datasets' => [
                 [
                     'label' => 'Transactions',
-                    'data' => [0, 10, 5, 2, 21, 32, 45, 74, 65, 45, 77, 89],
-                    'backgroundColor' => '#36A2EB',
+                    'data' => [$depositCount, $withdrawCount],
+                    'backgroundColor' => ['#36A2EB', '#FF6384'],
                     'borderColor' => '#9BD0F5',
                 ],
             ],
-            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'labels' => ['Deposit', 'Withdraw'],
         ];
     }
 

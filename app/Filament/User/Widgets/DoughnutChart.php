@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Filament\User\Widgets;
 
 use App\Enums\TransactionType;
-use App\Models\Transaction;
 use Filament\Widgets\ChartWidget;
 
-class PieChart extends ChartWidget
+class DoughnutChart extends ChartWidget
 {
-    protected static ?string $heading = 'Chart';
+    protected static ?string $heading = 'Deposit / Withdraw';
 
     protected function getData(): array
     {
-        $allTransactions = Transaction::get();
+        $user = auth()->guard('user')->user();
+
+        $allTransactions = $user->allTransactions();
 
         $depositCount = $allTransactions
             ->where('type', TransactionType::DEPOSIT)
@@ -37,6 +38,6 @@ class PieChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'pie';
+        return 'doughnut';
     }
 }
