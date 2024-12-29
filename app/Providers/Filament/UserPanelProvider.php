@@ -30,7 +30,7 @@ class UserPanelProvider extends PanelProvider
             ->authGuard('user')
             ->login()
             ->registration(Registration::class)
-            ->passwordReset()
+            // ->passwordReset()
             ->emailVerification()
             ->profile()
             ->colors([
