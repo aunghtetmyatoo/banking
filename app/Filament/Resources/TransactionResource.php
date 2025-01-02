@@ -39,16 +39,18 @@ class TransactionResource extends Resource implements HasShieldPermissions
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function ($query) {
+                return $query->orderBy('created_at', 'desc');
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('transaction_id')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('type'),
-                Tables\Columns\TextColumn::make('by.name')->sortable(),
-                Tables\Columns\TextColumn::make('from.name')->sortable(),
-                Tables\Columns\TextColumn::make('to.name')->sortable(),
-                Tables\Columns\TextColumn::make('amount')->sortable(),
+                Tables\Columns\TextColumn::make('by.name'),
+                Tables\Columns\TextColumn::make('from.name'),
+                Tables\Columns\TextColumn::make('to.name'),
+                Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->sortable()
                     ->label(__('Date'))
                     ->dateTime('Y-m-d H:i:s'),
             ])

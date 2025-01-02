@@ -17,7 +17,7 @@ class Dashboard extends BaseDashboard
         $widgets = [
             BarChart::make(),
             LineChart::make(),
-            PieChart::make(),
+            // PieChart::make(),
             DoughnutChart::make(),
         ];
 

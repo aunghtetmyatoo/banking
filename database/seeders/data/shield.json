@@ -10,7 +10,7 @@
     },
     {
         "name": "User",
-        "guard_name": "web",
+        "guard_name": "user",
         "permissions": {
             "transaction": ["view_transaction"]
         }

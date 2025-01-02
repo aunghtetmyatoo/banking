@@ -30,29 +30,5 @@
         "MobileNo": "+1555666777",
         "Address": "987 Pine Road, Hamletville, Country",
         "Balance": 100000
-    },
-    {
-        "FullName": "Michael Williams",
-        "UserName": "mikewills",
-        "Email": "user5@gmail.com",
-        "MobileNo": "+1444333222",
-        "Address": "654 Cedar Lane, Ruralville, Country",
-        "Balance": 100000
-    },
-    {
-        "FullName": "Sarah Taylor",
-        "UserName": "saraht",
-        "Email": "user6@gmail.com",
-        "MobileNo": "+1888999888",
-        "Address": "321 Birch Boulevard, Suburbia, Country",
-        "Balance": 100000
-    },
-    {
-        "FullName": "Christopher Miller",
-        "UserName": "chrismill",
-        "Email": "user7@gmail.com",
-        "MobileNo": "+1666777888",
-        "Address": "753 Maple Drive, Cityburgh, Country",
-        "Balance": 100000
     }
 ]

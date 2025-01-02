@@ -22,7 +22,7 @@ class TransactionSeeder extends Seeder
         $users = User::all();
 
         // Create 50 deposit transactions
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $user = $users->random();
             $amount = rand(100, 1000);
             $date = $this->randomDate();
@@ -33,7 +33,7 @@ class TransactionSeeder extends Seeder
         }
 
         // Create 50 withdrawal transactions
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $user = $users->random();
             $amount = rand(100, 1000);
             $date = $this->randomDate();
@@ -44,7 +44,7 @@ class TransactionSeeder extends Seeder
         }
 
         // Create 100 transfer transactions
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $fromUser = $users->random();
             $toUser = $users->where('id', '!=', $fromUser->id)->random();
             $amount = rand(100, 1000);

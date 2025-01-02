@@ -2,23 +2,28 @@
 
 namespace App\Policies;
 
+use App\Models\Admin;
 use App\Models\Transaction;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserTransactionPolicy
+class TransactionPolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(Admin|User $user): bool
     {
+        // return true;
         return $user->can('view_transaction');
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Transaction $transaction): bool
+    public function view(Admin|User $user, Transaction $transaction): bool
     {
         return $user->can('view_transaction');
     }
