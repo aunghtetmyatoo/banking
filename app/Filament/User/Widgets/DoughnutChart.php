@@ -36,6 +36,30 @@ class DoughnutChart extends ChartWidget
         ];
     }
 
+    protected function getOptions(): array
+    {
+        return [
+            'scales' => [
+                'x' => [
+                    'grid' => [
+                        'display' => false, // Remove x-axis grid lines
+                    ],
+                    'ticks' => [
+                        'display' => false, // Remove x-axis labels
+                    ],
+                ],
+                'y' => [
+                    'grid' => [
+                        'display' => false, // Remove y-axis grid lines
+                    ],
+                    'ticks' => [
+                        'display' => false, // Remove x-axis labels
+                    ],
+                ],
+            ],
+        ];
+    }
+
     protected function getType(): string
     {
         return 'doughnut';

@@ -5,7 +5,7 @@
                 <form wire:submit.prevent="submit">
                     {{ $this->form }}
 
-                    <div class="pt-4">
+                    <div class="pt-8">
                         <x-filament::button type="submit">
                             {{ __('Submit') }}
                         </x-filament::button>
