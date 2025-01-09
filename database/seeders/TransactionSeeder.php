@@ -39,7 +39,7 @@ class TransactionSeeder extends Seeder
             $date = $this->randomDate();
 
             if ($amount <= $user->balance) {
-                Transaction::make(TransactionType::WITHDRAW, $amount, $admin, $user, null, $date);
+                Transaction::make(TransactionType::WITHDRAW, $amount, $user, $admin, null, $date);
             }
         }
 

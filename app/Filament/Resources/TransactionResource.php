@@ -50,6 +50,10 @@ class TransactionResource extends Resource implements HasShieldPermissions
                 Tables\Columns\TextColumn::make('from.name'),
                 Tables\Columns\TextColumn::make('to.name'),
                 Tables\Columns\TextColumn::make('amount'),
+                Tables\Columns\TextColumn::make('from_balance_before'),
+                Tables\Columns\TextColumn::make('from_balance_after'),
+                Tables\Columns\TextColumn::make('to_balance_before'),
+                Tables\Columns\TextColumn::make('to_balance_after'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('Date'))
                     ->dateTime('Y-m-d H:i:s'),

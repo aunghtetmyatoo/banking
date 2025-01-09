@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TransactionType;
 use App\Exceptions\AmountNotEnoughException;
+use App\Exceptions\TransactionFailedException;
 use Carbon\Carbon;
 use Exception;
 use Filament\Notifications\Notification;
@@ -56,6 +57,9 @@ class Transaction extends Model
                 if ($fromUser) {
                     if ($transactionType === TransactionType::DEPOSIT) {
                         $fromUserLocked = SystemBalance::lockForUpdate()->first();
+                        $fromBalanceBefore = $fromUserLocked->balance;
+                    } elseif ($transactionType === TransactionType::WITHDRAW) {
+                        $fromUserLocked = get_class($user)::lockForUpdate()->find($user->id);
                         $fromBalanceBefore = $fromUserLocked->balance;
                     } else {
                         $fromUserLocked = get_class($fromUser)::lockForUpdate()->find($fromUser->id);
@@ -116,8 +120,8 @@ class Transaction extends Model
                 ->danger()
                 ->send();
 
-            throw $e;
-            // throw new TransactionFailedException;
+            // throw $e;
+            throw new TransactionFailedException;
         }
 
         return $transaction;

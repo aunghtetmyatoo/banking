@@ -98,6 +98,8 @@ class Registration extends BaseRegister
             'otp_code' => $otpCode,
         ]);
 
+        $user->assignRole('User');
+
         Auth::login($user);
 
         if (config('app.otp')) {
